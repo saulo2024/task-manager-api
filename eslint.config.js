@@ -1,7 +1,13 @@
-import js from "@eslint/js";
 import globals from "globals";
-import { defineConfig } from "eslint/config";
+import pluginJs from "@eslint/js";
 
-export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
-]);
+export default [
+  {
+    languageOptions: { 
+      globals: {
+        ...globals.node // ISSO AQUI habilita o 'process' e outras globais do Node
+      } 
+    }
+  },
+  pluginJs.configs.recommended,
+];
