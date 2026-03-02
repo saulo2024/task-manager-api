@@ -1,5 +1,5 @@
 import express from 'express';
-import { createTask, getTasks, updateTask} from '../controllers/task.controller.js';
+import { createTask, getTasks, updateTask, deleteTask} from '../controllers/task.controller.js';
 import authorize from '../middlewares/auth.middleware.js';
 
 const taskRouter = express.Router();
@@ -8,5 +8,6 @@ const taskRouter = express.Router();
 taskRouter.post('/', authorize, createTask);
 taskRouter.get('/', authorize, getTasks);
 taskRouter.put('/:id', authorize, updateTask);
+taskRouter.delete('/:id', authorize, deleteTask);
 
 export default taskRouter;

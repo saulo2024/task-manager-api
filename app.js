@@ -3,9 +3,11 @@ import authRouter from './routes/auth.routes.js';
 import connectToDatabase from './database/mongodb.js';
 import userRouter from './routes/user.routes.js';
 import taskRouter from './routes/task.routes.js';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors()); // Habilita CORS
 app.use(express.json()); // ESSENCIAL para ler o JSON que você envia
 
 connectToDatabase();
